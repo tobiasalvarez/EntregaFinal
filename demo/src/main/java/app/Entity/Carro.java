@@ -1,10 +1,15 @@
 package app.Entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -30,7 +35,13 @@ public class Carro {
 	
 	@ManyToOne
 	@JoinColumn(name = "marca_id")
+	@JsonIgnoreProperties("carros")
 	private Marca marca;
+	
+	@ManyToMany
+	@JoinColumn(name = "pecas_id")
+	@JsonIgnoreProperties("carros")
+	private List<Peca> pecas;
 	
 
 }
