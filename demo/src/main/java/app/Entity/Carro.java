@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
@@ -34,12 +35,12 @@ public class Carro {
 	private int ano;
 	
 	@ManyToOne
-	@JoinColumn(name = "marca_id")
+	@JoinTable(name = "marca_id")
 	@JsonIgnoreProperties("carros")
 	private Marca marca;
 	
 	@ManyToMany
-	@JoinColumn(name = "pecas_id")
+	@JoinTable(name = "pecas_id")
 	@JsonIgnoreProperties("carros")
 	private List<Peca> pecas;
 	
