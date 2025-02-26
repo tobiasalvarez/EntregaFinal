@@ -5,16 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.Entity.Marca;
-import app.Repository.MarcaRepository;
+import app.Entity.Carro;
+import app.Entity.Peca;
+import app.Repository.PecaRepository;
 
 @Service
-public class MarcaService {
+public class PecaService {
 
 	@Autowired
-	private MarcaRepository marcaRepository;
+	private PecaRepository pecaRepository;
 	
-	public String save(Marca marca) {
+	public String save(Peca peca) {
 		return null;
 	}
 	
@@ -22,15 +23,15 @@ public class MarcaService {
 		return null;
 	}
 	
-	public Marca findById(long id) {
+	public Peca findById(long id) {
 		return null;
 	}
 	
-	public List<Marca> findAll(){
+	public List<Peca> findAll(){
 		return null;
 	}
 	
-	public String update(Marca marca, long id) {
+	public String update(Peca peca, long id) {
 		return null;
 	}
 }
