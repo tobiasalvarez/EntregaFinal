@@ -27,7 +27,6 @@ public class Peca {
 	private String nome;
 	
 	@ManyToMany
-	@NotNull(message = "O Carro e obrigatorio")
 	private List<Carro> Carros;
 	
 	@ManyToMany
