@@ -15,22 +15,28 @@ public class MarcaService {
 	private MarcaRepository marcaRepository;
 	
 	public String save(Marca marca) {
-		return null;
+		this.marcaRepository.save(marca);
+		return "Marca salva com sucesso!";
 	}
 	
 	public String delete(long id) {
-		return null;
+		this.marcaRepository.deleteById(id);
+		return "Marca deletada com sucesso!";
 	}
 	
 	public Marca findById(long id) {
-		return null;
+		Marca marca = this.marcaRepository.findById(id).get();
+		return marca;
 	}
 	
 	public List<Marca> findAll(){
-		return null;
+		List<Marca> list = this.marcaRepository.findAll();
+		return list;
 	}
 	
 	public String update(Marca marca, long id) {
-		return null;
+		marca.setId(id);
+		this.marcaRepository.save(marca);
+		return "Marca atualizada com sucesso!";
 	}
 }

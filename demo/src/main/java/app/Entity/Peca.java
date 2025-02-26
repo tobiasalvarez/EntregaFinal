@@ -1,5 +1,7 @@
 package app.Entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,9 +28,9 @@ public class Peca {
 	
 	@ManyToMany
 	@NotNull(message = "O Carro e obrigatorio")
-	private String Carro;
+	private List<Carro> Carros;
 	
 	@ManyToMany
 	@NotNull(message = "O Fornecedor obligatorio")
-	private Fornecedor fornecedor;
+	private List<Fornecedor> fornecedores;
 }

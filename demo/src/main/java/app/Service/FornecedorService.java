@@ -24,19 +24,19 @@ public class FornecedorService {
 		return "Carro deletado com sucesso!";
 	}
 	
-	public Carro findById(long id) {
-		Carro carro = this.fornecedorRepository.findById(id).get();
-		return carro;
+	public Fornecedor findById(long id) {
+		Fornecedor fornecedor = this.fornecedorRepository.findById(id).get();
+		return fornecedor;
 	}
 	
-	public List<Carro> findAll(){
-		List<Carro> list = this.fornecedorRepository.findAll();
+	public List<Fornecedor> findAll(){
+		List<Fornecedor> list = this.fornecedorRepository.findAll();
 		return list;
 	}
 	
-	public String update(Carro carro, long id) {
-		carro.setId(id);
-		this.fornecedorRepository.save(carro);
+	public String update(Fornecedor fornecedor, long id) {
+		fornecedor.setId(id);
+		this.fornecedorRepository.save(fornecedor);
 		return "Carro alterado com sucesso!";
 	}
 }

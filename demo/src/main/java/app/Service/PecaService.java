@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.Entity.Carro;
 import app.Entity.Peca;
 import app.Repository.PecaRepository;
 
@@ -16,22 +15,28 @@ public class PecaService {
 	private PecaRepository pecaRepository;
 	
 	public String save(Peca peca) {
-		return null;
+		this.pecaRepository.save(peca);
+		return "Peca salva com sucesso!";
 	}
 	
 	public String delete(long id) {
-		return null;
+		this.pecaRepository.deleteById(id);
+		return "Deletado com sucesso!";
 	}
 	
 	public Peca findById(long id) {
-		return null;
+		Peca peca = this.pecaRepository.findById(id).get();
+		return peca;
 	}
 	
 	public List<Peca> findAll(){
-		return null;
+		List<Peca> list = this.pecaRepository.findAll();
+		return list;
 	}
 	
 	public String update(Peca peca, long id) {
-		return null;
+		peca.setId(id);
+		this.pecaRepository.save(peca);
+		return "Peca atualizada com sucesso!";
 	}
 }
