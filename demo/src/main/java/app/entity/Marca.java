@@ -1,13 +1,15 @@
-package app.Entity;
+package app.entity;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,18 +20,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Peca {
-
+public class Marca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+	@NotBlank(message = "A marca e obrigatoria")
 	private String nome;
 	
-	@ManyToMany
-	private List<Carro> Carros;
+	@OneToMany(mappedBy = "marca")
+	@JsonIgnoreProperties("marca")
+	public List<Carro> carros;
 	
-	@ManyToMany
-	@NotNull(message = "O Fornecedor obligatorio")
-	private List<Fornecedor> fornecedores;
+
 }

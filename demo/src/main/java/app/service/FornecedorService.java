@@ -1,12 +1,12 @@
-package app.Service;
+package app.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.Entity.Fornecedor;
-import app.Repository.FornecedorRepository;
+import app.entity.Fornecedor;
+import app.repository.FornecedorRepository;
 
 @Service
 public class FornecedorService {
@@ -16,12 +16,12 @@ public class FornecedorService {
 	
 	public String save(Fornecedor fornecedor) {
 		this.fornecedorRepository.save(fornecedor);
-		return "Carro salvo com sucesso!";
+		return "Fornecedor salvo com sucesso!";
 	}
 	
 	public String delete(long id) {
 		this.fornecedorRepository.deleteById(id);
-		return "Carro deletado com sucesso!";
+		return "Fornecedor deletado com sucesso!";
 	}
 	
 	public Fornecedor findById(long id) {
@@ -37,6 +37,6 @@ public class FornecedorService {
 	public String update(Fornecedor fornecedor, long id) {
 		fornecedor.setId(id);
 		this.fornecedorRepository.save(fornecedor);
-		return "Carro alterado com sucesso!";
+		return "Fornecedor alterado com sucesso!";
 	}
 }

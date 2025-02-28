@@ -1,4 +1,4 @@
-package app.Entity;
+package app.entity;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class Fornecedor {
 	private String cidade;
 	
 	@ManyToMany
-	@JoinTable(name = "pecas_id")
+	@JoinTable(name = "pecasFornecedor")
 	@JsonIgnoreProperties("fornecedores")
 	private List<Peca> pecas;
 	

@@ -1,4 +1,4 @@
-package app.Entity;
+package app.entity;
 
 import java.util.List;
 
@@ -35,12 +35,12 @@ public class Carro {
 	private int ano;
 	
 	@ManyToOne
-	@JoinTable(name = "marca_id")
+	@JoinColumn(name = "marca_id")
 	@JsonIgnoreProperties("carros")
 	private Marca marca;
 	
 	@ManyToMany
-	@JoinTable(name = "pecas_id")
+	@JoinTable(name = "pecasCarro")
 	@JsonIgnoreProperties("carros")
 	private List<Peca> pecas;
 	

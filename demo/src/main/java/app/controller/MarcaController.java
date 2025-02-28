@@ -1,4 +1,4 @@
-package app.Controller;
+package app.controller;
 
 import java.util.List;
 
@@ -14,18 +14,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.Entity.Fornecedor;
-import app.Entity.Marca;
-import app.Service.MarcaService;
+import app.entity.Marca;
+import app.service.MarcaService;
 
 @RestController
-@RequestMapping("/api/Marca")
+@RequestMapping("/api/marca")
 public class MarcaController {
 	
 	@Autowired
 	private MarcaService marcaService;
 	
-	@PostMapping("/salvar")
+	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Marca marca){
 		try {
 			String message = this.marcaService.save(marca);
@@ -66,7 +65,7 @@ public class MarcaController {
 		}
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update (@RequestBody Marca marca,@PathVariable long id){
 		try {
 			marca.setId(id);
