@@ -1,4 +1,4 @@
-package app.Controller;
+package app.controller;
 
 import java.util.List;
 
@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.Entity.Carro;
-import app.Service.CarroService;
+import app.entity.Carro;
+import app.service.CarroService;
+
 import org.springframework.web.bind.annotation.PutMapping;
 
 
@@ -38,7 +39,7 @@ public class CarroController {
 	}
 	
 	@DeleteMapping("/deleteById/{id}")
-	public ResponseEntity<String>delete(@PathVariable long id){
+	public ResponseEntity<String>deleteById(@PathVariable long id){
 		try {
 			String message = this.carroService.delete(id);
 			return new ResponseEntity<>(message, HttpStatus.OK);
@@ -75,6 +76,27 @@ public class CarroController {
 			carro.setId(id);
 			String message = this.carroService.save(carro);
 			return new ResponseEntity<>(message, HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByMarcaNome")
+	public ResponseEntity<List<Carro>> findByMarcaNome(String marca){
+		try {
+			List<Carro> list = this.carroService.findByMarcaNome(marca);
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByModelo")
+	public ResponseEntity<List<Carro>> findByModelo(String modelo){
+		try {
+			List<Carro> list = this.carroService.findByModeloIgnoreCase(modelo);
+			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

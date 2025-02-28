@@ -1,12 +1,13 @@
-package app.Service;
+package app.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.Entity.Carro;
-import app.Repository.CarroRepository;
+import app.entity.Carro;
+import app.entity.Marca;
+import app.repository.CarroRepository;
 
 @Service
 public class CarroService {
@@ -38,6 +39,16 @@ public class CarroService {
 		carro.setId(id);
 		this.carroRepository.save(carro);
 		return "Carro alterado com sucesso!";
+	}
+	
+	public List<Carro> findByMarcaNome(String marca){
+		List<Carro> list = this.carroRepository.findByMarcaNome(marca);
+		return list;
+	}
+	
+	public List<Carro> findByModeloIgnoreCase(String modelo){
+		List<Carro> list = this.carroRepository.findByModeloIgnoreCase(modelo);
+		return list;
 	}
 
 }

@@ -1,10 +1,10 @@
-package app.Repository;
+package app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import app.Entity.Peca;
+import app.entity.Usuario;
 @Repository
-public interface PecaRepository extends JpaRepository<Peca, Long>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 }

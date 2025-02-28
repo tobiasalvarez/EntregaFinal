@@ -1,4 +1,4 @@
-package app.Controller;
+package app.controller;
 
 import java.util.List;
 
@@ -14,21 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.Entity.Fornecedor;
-import app.Entity.Peca;
-import app.Service.PecaService;
+import app.entity.Usuario;
+import app.service.UsuarioService;
 
 @RestController
-@RequestMapping("/api/peca")
-public class PecaController {
+@RequestMapping("/api/usuario")
+public class UsuarioController {
 	
 	@Autowired
-	private PecaService pecaService;
+	private UsuarioService usuarioService;
 	
-	@PostMapping("/salvar")
-	public ResponseEntity<String> save(@RequestBody Peca peca){
+	@PostMapping("/save")
+	public ResponseEntity<String> save(@RequestBody Usuario usuario){
 		try {
-			String message = this.pecaService.save(peca);
+			String message = this.usuarioService.save(usuario);
 			return new ResponseEntity<>(message, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -38,7 +37,7 @@ public class PecaController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@RequestBody long id){
 		try {
-			String message = this.pecaService.delete(id);
+			String message = this.usuarioService.delete(id);
 			return new ResponseEntity<>(message, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -46,30 +45,30 @@ public class PecaController {
 	}
 	
 	@GetMapping("/findById/{id}")
-	public ResponseEntity<Peca> findById(@PathVariable long id){
+	public ResponseEntity<Usuario> findById(@PathVariable long id){
 		try {
-			Peca peca = this.pecaService.findById(id);
-			return new ResponseEntity<>(peca, HttpStatus.OK);
+			Usuario usuario = this.usuarioService.findById(id);
+			return new ResponseEntity<>(usuario, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@GetMapping("/findAll")
-	public ResponseEntity<List<Peca>> findAll(){
+	public ResponseEntity<List<Usuario>> findAll(){
 		try {
-			List<Peca> lista = this.pecaService.findAll();
+			List<Usuario> lista = this.usuarioService.findAll();
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<String> update (@RequestBody Peca peca,@PathVariable long id){
+	@PutMapping("/update/{id}")
+	public ResponseEntity<String> update (@RequestBody Usuario usuario,@PathVariable long id){
 		try {
-			peca.setId(id);
-			String message = this.pecaService.save(peca);
+			usuario.setId(id);
+			String message = this.usuarioService.save(usuario);
 			return new ResponseEntity<>(message, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -77,5 +76,6 @@ public class PecaController {
 		}
 	}
 
+	
 
 }

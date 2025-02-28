@@ -1,4 +1,4 @@
-package app.Controller;
+package app.controller;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.Entity.Fornecedor;
-import app.Service.FornecedorService;
+import app.entity.Fornecedor;
+import app.service.FornecedorService;
 
 @RestController
 @RequestMapping("/api/fornecedor")
@@ -24,7 +24,7 @@ public class FornecedorController {
 	@Autowired
 	private FornecedorService fornecedorService;
 	
-	@PostMapping("/salvar")
+	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Fornecedor fornecedor){
 		try {
 			String message = this.fornecedorService.save(fornecedor);
@@ -66,7 +66,7 @@ public class FornecedorController {
 		}
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update (@RequestBody Fornecedor fornecedor,@PathVariable long id){
 		try {
 			fornecedor.setId(id);
