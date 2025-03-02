@@ -104,6 +104,16 @@ public class CarroController {
 		}
 	}
 	
+	@GetMapping("/findByAnoBetween")
+	public ResponseEntity<List<Carro>> findByAnoBetween(@RequestParam int ano1, @RequestParam int ano2){
+		try {
+			List<Carro> list = this.carroService.findByAnoBetween(ano1, ano2);
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	
 	}
 

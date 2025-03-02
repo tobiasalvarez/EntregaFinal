@@ -49,4 +49,6 @@ public class PecaService {
 		Peca peca = this.pecaRepository.findByFornecedoresNomeIgnoreCase(nome);
 		return peca;
 	}
+	
+	
 }

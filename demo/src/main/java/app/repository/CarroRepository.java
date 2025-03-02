@@ -14,4 +14,6 @@ public interface CarroRepository extends JpaRepository<Carro, Long> {
 	
 	public List<Carro> findByModeloIgnoreCase(String modelo);
 	
+	public List<Carro> findByAnoBetween(int ano1, int ano2);
+	
 }
