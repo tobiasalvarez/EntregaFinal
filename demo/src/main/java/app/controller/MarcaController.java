@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Marca;
@@ -72,6 +73,26 @@ public class MarcaController {
 			String message = this.marcaService.save(marca);
 			return new ResponseEntity<>(message, HttpStatus.OK);
 			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByNomeIgnoreCase")
+	public ResponseEntity<Marca> findByNomeIgnoreCase(@RequestParam String nome){
+		try {
+			Marca marca = this.marcaService.findByNomeIgnoreCase(nome);
+			return new ResponseEntity<>(marca, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByCarrosModelo")
+	public ResponseEntity<Marca> findByCarrosModelo(@RequestParam String modelo){
+		try {
+			Marca marca = this.marcaService.findByCarrosModelo(modelo);
+			return new ResponseEntity<>(marca, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

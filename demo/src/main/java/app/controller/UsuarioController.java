@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Usuario;
@@ -71,6 +72,26 @@ public class UsuarioController {
 			String message = this.usuarioService.save(usuario);
 			return new ResponseEntity<>(message, HttpStatus.OK);
 			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByNomeIgnoreCase")
+	public ResponseEntity<Usuario> findByNomeIgnoreCase(@RequestParam String nome){
+		try {
+			Usuario usuario = this.usuarioService.findByNomeIgnoreCase(nome);
+			return new ResponseEntity<>(usuario, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByTipoUser")
+	public ResponseEntity<List<Usuario>> findByTipoUser(@RequestParam String user){
+		try {
+			List<Usuario> list = this.usuarioService.findByTipoUser(user);
+			return new ResponseEntity<>(list, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

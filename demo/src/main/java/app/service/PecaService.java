@@ -39,4 +39,14 @@ public class PecaService {
 		this.pecaRepository.save(peca);
 		return "Peca atualizada com sucesso!";
 	}
+	
+	public Peca findByCarrosModeloIgnoreCase(String modelo) {
+		Peca peca = this.pecaRepository.findByCarrosModeloIgnoreCase(modelo);
+		return peca;
+	}
+	
+	public Peca findByFornecedoresNomeIgnoreCase(String nome) {
+		Peca peca = this.pecaRepository.findByFornecedoresNomeIgnoreCase(nome);
+		return peca;
+	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Peca;
@@ -71,6 +72,26 @@ public class PecaController {
 			String message = this.pecaService.save(peca);
 			return new ResponseEntity<>(message, HttpStatus.OK);
 			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByCarrosModeloIgnoreCase")
+	public ResponseEntity<Peca> findByCarrosModeloIgnoreCase(@RequestParam String modelo){
+		try {
+			Peca peca = this.pecaService.findByCarrosModeloIgnoreCase(modelo);
+			return new ResponseEntity<>(peca, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByFornecedoresNomeIgnoreCase")
+	public ResponseEntity<Peca> findByFornecedoresNomeIgnoreCase(String nome){
+		try {
+			Peca peca = this.pecaService.findByFornecedoresNomeIgnoreCase(nome);
+			return new ResponseEntity<>(peca, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

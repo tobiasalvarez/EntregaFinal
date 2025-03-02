@@ -39,4 +39,14 @@ public class MarcaService {
 		this.marcaRepository.save(marca);
 		return "Marca atualizada com sucesso!";
 	}
+	
+	public Marca findByNomeIgnoreCase(String nome) {
+		Marca marca = this.marcaRepository.findByNomeIgnoreCase(nome);
+		return marca;
+	}
+	
+	public Marca findByCarrosModelo(String modelo) {
+		Marca marca = this.marcaRepository.findByCarrosModelo(modelo);
+		return marca;
+	}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Carro;
@@ -83,7 +84,7 @@ public class CarroController {
 	}
 	
 	@GetMapping("/findByMarcaNome")
-	public ResponseEntity<List<Carro>> findByMarcaNome(String marca){
+	public ResponseEntity<List<Carro>> findByMarcaNome(@RequestParam String marca){
 		try {
 			List<Carro> list = this.carroService.findByMarcaNome(marca);
 			return new ResponseEntity<>(list, HttpStatus.OK);
@@ -93,7 +94,7 @@ public class CarroController {
 	}
 	
 	@GetMapping("/findByModelo")
-	public ResponseEntity<List<Carro>> findByModelo(String modelo){
+	public ResponseEntity<List<Carro>> findByModelo(@RequestParam String modelo){
 		try {
 			List<Carro> list = this.carroService.findByModeloIgnoreCase(modelo);
 			return new ResponseEntity<>(list, HttpStatus.OK);

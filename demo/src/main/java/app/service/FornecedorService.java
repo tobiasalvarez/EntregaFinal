@@ -15,6 +15,15 @@ public class FornecedorService {
 	private FornecedorRepository fornecedorRepository;
 	
 	public String save(Fornecedor fornecedor) {
+		Fornecedor fornecedo = this.fornecedorRepository.findByCnpj(fornecedor.getCnpj());
+		if(fornecedo != null) {
+			 throw new RuntimeException("CNPJ ja cadastrado");
+		}else if(fornecedor.getEmail() == null) {
+			fornecedor.setStatusCadastro("Incompleto");
+		}else{
+			fornecedor.setStatusCadastro("Completo");
+		}
+		
 		this.fornecedorRepository.save(fornecedor);
 		return "Fornecedor salvo com sucesso!";
 	}
@@ -38,5 +47,10 @@ public class FornecedorService {
 		fornecedor.setId(id);
 		this.fornecedorRepository.save(fornecedor);
 		return "Fornecedor alterado com sucesso!";
+	}
+	
+	public Fornecedor findByPecasNome(String nome) {
+		Fornecedor fornecedor = this.fornecedorRepository.findByPecasNome(nome);
+		return fornecedor;
 	}
 }
