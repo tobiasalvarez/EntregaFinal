@@ -2,6 +2,8 @@ package app.entity;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -29,9 +31,10 @@ public class Fornecedor {
 	private long id;
 	@NotBlank(message = "O nome e obrigatorio")
 	private String nome;
-	@Email
+	@Email(message = "Email nao valido")
 	private String email;
-	
+	@CNPJ
+	@NotBlank(message = "CNPJ e obrigatorio")
 	private String cnpj;
 	
 	private String cidade;
@@ -40,5 +43,7 @@ public class Fornecedor {
 	@JoinTable(name = "pecasFornecedor")
 	@JsonIgnoreProperties("fornecedores")
 	private List<Peca> pecas;
+	
+	private String statusCadastro;
 	
 }

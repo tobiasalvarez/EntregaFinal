@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Fornecedor;
@@ -31,6 +32,8 @@ public class FornecedorController {
 			return new ResponseEntity<>(message, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
+			String erro = e.getMessage();
+			System.out.println(erro);
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -73,6 +76,16 @@ public class FornecedorController {
 			String message = this.fornecedorService.save(fornecedor);
 			return new ResponseEntity<>(message, HttpStatus.OK);
 			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByPecasNome")
+	public ResponseEntity<Fornecedor> findByPecasNome(@RequestParam String nome){
+		try {
+			Fornecedor fornecedor = this.fornecedorService.findByPecasNome(nome);
+			return new ResponseEntity<>(fornecedor, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

@@ -30,7 +30,7 @@ public class Peca {
 	
 	@ManyToMany(mappedBy = "pecas")
 	@JsonIgnoreProperties("pecas")
-	private List<Carro> Carros;
+	private List<Carro> carros;
 	
 	@ManyToMany(mappedBy = "pecas")
 	@NotNull(message = "O Fornecedor obligatorio")

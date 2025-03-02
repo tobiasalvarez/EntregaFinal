@@ -39,5 +39,15 @@ public class UsuarioService {
 		this.usuarioRepository.save(usuario);
 		return "Usuario atualizado com sucesso!";
 	}
+	
+	public Usuario findByNomeIgnoreCase(String nome) {
+		Usuario usuario = this.usuarioRepository.findByNomeIgnoreCase(nome);
+		return usuario;
+	}
+	
+	public List<Usuario> findByTipoUser(String user){
+		List<Usuario> list = this.usuarioRepository.findByTipoUser(user);
+		return list;
+	}
 
 }

@@ -29,7 +29,6 @@ public class Usuario {
 	@NotBlank(message = "O tipo de usuario e obrigatorio")
 	private String tipoUser;
 	
-	private String statusCadastro;
 	
 
 }
