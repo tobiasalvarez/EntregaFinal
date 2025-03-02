@@ -49,5 +49,10 @@ public class CarroService {
 		List<Carro> list = this.carroRepository.findByModeloIgnoreCase(modelo);
 		return list;
 	}
+	
+	public List<Carro> findByAnoBetween(int ano1, int ano2){
+		List<Carro> list = this.carroRepository.findByAnoBetween(ano1, ano2);
+		return list;
+	}
 
 }
