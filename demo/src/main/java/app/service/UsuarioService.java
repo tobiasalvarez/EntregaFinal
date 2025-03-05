@@ -50,4 +50,10 @@ public class UsuarioService {
 		return list;
 	}
 
+	//Query
+	  public List<Usuario> buscarPorNome(String nome) {
+		  List<Usuario> lista = this.usuarioRepository.buscarPorNome(nome);
+	        return lista;
+	    }
+	
 }

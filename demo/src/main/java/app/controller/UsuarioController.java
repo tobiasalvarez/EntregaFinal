@@ -97,6 +97,16 @@ public class UsuarioController {
 		}
 	}
 
-	
+	 @GetMapping("/buscarPorNome")
+	    public ResponseEntity<List<Usuario>> buscarPorNome(@RequestParam String nome) {
+		 try {
+			 List<Usuario> lista  = usuarioService.buscarPorNome(nome);
+			return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	 
+}
 
 }
