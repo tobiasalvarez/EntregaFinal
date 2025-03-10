@@ -12,5 +12,7 @@ public interface FornecedorRepository extends JpaRepository<Fornecedor, Long>{
 	public Fornecedor findByCnpj(String cnpj);
 	
 	public Fornecedor findByPecasNome(String nome);
+	
+	public Fornecedor findByEmail(String email);
 
 }

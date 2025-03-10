@@ -53,4 +53,9 @@ public class FornecedorService {
 		Fornecedor fornecedor = this.fornecedorRepository.findByPecasNome(nome);
 		return fornecedor;
 	}
+	
+	public Fornecedor findByEmail(String email) {
+		Fornecedor fornecedor = this.fornecedorRepository.findByEmail(email);
+		return fornecedor;
+	}
 }

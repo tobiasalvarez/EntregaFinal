@@ -9,7 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,15 +26,16 @@ public class Peca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+	@NotBlank(message = "O nome e obrigatorio!")
 	private String nome;
+	
 	
 	@ManyToMany(mappedBy = "pecas")
 	@JsonIgnoreProperties("pecas")
 	private List<Carro> carros;
 	
 	@ManyToMany(mappedBy = "pecas")
-	@NotNull(message = "O Fornecedor obligatorio")
+	@NotEmpty(message = "O Fornecedor obligatorio")
 	@JsonIgnoreProperties("pecas")
 	private List<Fornecedor> fornecedores;
 }

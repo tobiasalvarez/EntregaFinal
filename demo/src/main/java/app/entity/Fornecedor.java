@@ -32,6 +32,7 @@ public class Fornecedor {
 	@NotBlank(message = "O nome e obrigatorio")
 	private String nome;
 	@Email(message = "Email nao valido")
+	@NotBlank(message = "Email obrigatorio!")
 	private String email;
 	@CNPJ
 	@NotBlank(message = "CNPJ e obrigatorio")

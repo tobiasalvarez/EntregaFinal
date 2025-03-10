@@ -90,5 +90,15 @@ public class FornecedorController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@GetMapping("/findByEmail")
+	public ResponseEntity<Fornecedor> findByEmail(@RequestParam String email){
+		try {
+			Fornecedor fornecedor = this.fornecedorService.findByEmail(email);
+			return new ResponseEntity<>(fornecedor, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
 
 }
